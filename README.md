@@ -4,22 +4,21 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 
 ## Progress
 
-| #  | Exercise                                     | Directory   | Status         |
-|----|----------------------------------------------|-------------|----------------|
-| 1  | Quiz Game                                    | `quiz`      | ✅ Complete    |
-| 2  | URL Shortener                                | `urlshort`  | 🚧 Not started |
-| 3  | Choose Your Own Adventure                    | `cyoa`      | 🚧 Not started |
-| 4  | HTML Link Parser                             | `link`      | 🚧 Not started |
-| 5  | Sitemap Builder                              | `sitemap`   | 🚧 Not started |
-| 6  | Hacker Rank Problems &mdash; strings & bytes | `hr1`       | 🚧 Not started |
-| 7  | CLI Task Manager                             | `task`      | 🚧 Not started |
-| 8  | Phone Number Normalizer                      | `phone`     | 🚧 Not started |
-| 9  | Deck of Cards                                | `deck`      | 🚧 Not started |
-| 10 | Blackjack Game                               | `blackjack` | 🚧 Not started |
-| 12 | File Renaming Tool                           | `renamer`   | 🚧 Not started |
-| 13 | Quiet HN                                     | `quiet_hn`  | 🚧 Not started |
-
-Exercise #11 is not present in this repo.
+| #  | Exercise                                     | Directory      | Status         |
+|----|----------------------------------------------|----------------|----------------|
+| 1  | Quiz Game                                    | `quiz`         | ✅ Complete    |
+| 2  | URL Shortener                                | `urlshort`     | 🚧 Not started |
+| 3  | Choose Your Own Adventure                    | `cyoa`         | 🚧 Not started |
+| 4  | HTML Link Parser                             | `link`         | 🚧 Not started |
+| 5  | Sitemap Builder                              | `sitemap`      | 🚧 Not started |
+| 6  | Hacker Rank Problems &mdash; strings & bytes | `hr1`          | 🚧 Not started |
+| 7  | CLI Task Manager                             | `task`         | 🚧 Not started |
+| 8  | Phone Number Normalizer                      | `phone`        | 🚧 Not started |
+| 9  | Deck of Cards                                | `deck`         | 🚧 Not started |
+| 10 | Blackjack Game                               | `blackjack`    | 🚧 Not started |
+| 11 | Blackjack AI                                 | `blackjack_ai` | 🚧 Not started |
+| 12 | File Renaming Tool                           | `renamer`      | 🚧 Not started |
+| 13 | Quiet HN                                     | `quiet_hn`     | 🚧 Not started |
 
 ### Notes on the not-started exercises
 
