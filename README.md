@@ -7,7 +7,7 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 | #  | Exercise                                     | Directory      | Status         |
 |----|----------------------------------------------|----------------|----------------|
 | 1  | Quiz Game                                    | `quiz`         | ✅ Complete    |
-| 2  | URL Shortener                                | `urlshort`     | 🚧 Not started |
+| 2  | URL Shortener                                | `urlshort`     | ✅ Complete    |
 | 3  | Choose Your Own Adventure                    | `cyoa`         | 🚧 Not started |
 | 4  | HTML Link Parser                             | `link`         | 🚧 Not started |
 | 5  | Sitemap Builder                              | `sitemap`      | 🚧 Not started |
@@ -20,20 +20,36 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 | 12 | File Renaming Tool                           | `renamer`      | 🚧 Not started |
 | 13 | Quiet HN                                     | `quiet_hn`     | 🚧 Not started |
 
-### Notes on the not-started exercises
+### Notes on individual exercises
 
-`urlshort` and `quiet_hn` ship upstream code and are further along than the bare
-scaffolds:
+- **`urlshort`** implements `MapHandler`, `YAMLHandler`, and the JSON bonus as
+  `JSONHandler`, all covered by unit tests. The Bolt-database bonus is not done.
+  `main.go` adds two flags beyond upstream:
 
-- **`urlshort`** has upstream's `MapHandler` and `YAMLHandler` stubs, both still
-  `// TODO: Implement this...` returning `nil`. The server starts, but every
-  request panics on the nil `http.HandlerFunc` until they're implemented.
+  ```sh
+  cd urlshort
+  go run .                            # built-in YAML example (the default)
+  go run . -format=json               # built-in JSON example, same paths
+  go run . -in paths.yaml             # read the mappings from a file instead
+  go run . -format=json -in paths.json
+  ```
+
+  Unmatched paths fall through a chain: the chosen format handler, then a
+  hardcoded `MapHandler`, then a `ServeMux` that serves `Hello, world!`.
+
+  YAML parsing uses [`go.yaml.in/yaml/v3`](https://github.com/yaml/go-yaml)
+  rather than upstream's `gopkg.in/yaml.v2`. The original `go-yaml/yaml`
+  repository was archived in April 2025 and its v1&ndash;v3 are now frozen at
+  security fixes only; the YAML org's fork is drop-in compatible and only the
+  import path changed. JSON uses the standard library's `encoding/json`, so the
+  bonus adds no dependency.
+
 - **`quiet_hn`** has a working upstream Hacker News client in `lib/`, with tests.
   Those tests call the live HN API, so they fail without a network connection.
   The exercise itself &mdash; making the page load quietly and quickly &mdash; is
   not done.
 
-The remaining exercises contain an empty `main()` and an empty `lib` package.
+The not-started exercises contain an empty `main()` and an empty `lib` package.
 
 ## Layout
 
