@@ -8,7 +8,7 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 |----|----------------------------------------------|----------------|----------------|
 | 1  | Quiz Game                                    | `quiz`         | ✅ Complete    |
 | 2  | URL Shortener                                | `urlshort`     | ✅ Complete    |
-| 3  | Choose Your Own Adventure                    | `cyoa`         | 🚧 Not started |
+| 3  | Choose Your Own Adventure                    | `cyoa`         | ✅ Complete    |
 | 4  | HTML Link Parser                             | `link`         | 🚧 Not started |
 | 5  | Sitemap Builder                              | `sitemap`      | 🚧 Not started |
 | 6  | Hacker Rank Problems &mdash; strings & bytes | `hr1`          | 🚧 Not started |
@@ -43,6 +43,20 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
   security fixes only; the YAML org's fork is drop-in compatible and only the
   import path changed. JSON uses the standard library's `encoding/json`, so the
   bonus adds no dependency.
+
+- **`cyoa`** serves the story over HTTP. `ParseJsonToStoryPageMap` unmarshals
+  `gopher.json` into a `map[string]StoryPage`, and `BuildHandler` returns an
+  `http.HandlerFunc` that routes by URL path: `/` and `/intro` serve the intro
+  arc, `/<arc>` serves that arc, and an unknown arc returns 404. Each page is
+  rendered with an `html/template` (`layout.html`) whose option links point at
+  `/<arc>`, so the story is navigable by clicking. Both functions are covered by
+  unit tests in `lib/cyoa_test.go` (routing driven via `httptest`). The web
+  version is done; the terminal/CLI bonus is not.
+
+  ```sh
+  cd cyoa
+  go run . -in gopher.json   # then open http://localhost:8080
+  ```
 
 - **`quiet_hn`** has a working upstream Hacker News client in `lib/`, with tests.
   Those tests call the live HN API, so they fail without a network connection.
