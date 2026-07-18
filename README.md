@@ -20,51 +20,6 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 | 12 | File Renaming Tool                           | `renamer`      | 🚧 Not started |
 | 13 | Quiet HN                                     | `quiet_hn`     | 🚧 Not started |
 
-### Notes on individual exercises
-
-- **`urlshort`** implements `MapHandler`, `YAMLHandler`, and the JSON bonus as
-  `JSONHandler`, all covered by unit tests. The Bolt-database bonus is not done.
-  `main.go` adds two flags beyond upstream:
-
-  ```sh
-  cd urlshort
-  go run .                            # built-in YAML example (the default)
-  go run . -format=json               # built-in JSON example, same paths
-  go run . -in paths.yaml             # read the mappings from a file instead
-  go run . -format=json -in paths.json
-  ```
-
-  Unmatched paths fall through a chain: the chosen format handler, then a
-  hardcoded `MapHandler`, then a `ServeMux` that serves `Hello, world!`.
-
-  YAML parsing uses [`go.yaml.in/yaml/v3`](https://github.com/yaml/go-yaml)
-  rather than upstream's `gopkg.in/yaml.v2`. The original `go-yaml/yaml`
-  repository was archived in April 2025 and its v1&ndash;v3 are now frozen at
-  security fixes only; the YAML org's fork is drop-in compatible and only the
-  import path changed. JSON uses the standard library's `encoding/json`, so the
-  bonus adds no dependency.
-
-- **`cyoa`** serves the story over HTTP. `ParseJsonToStoryPageMap` unmarshals
-  `gopher.json` into a `map[string]StoryPage`, and `BuildHandler` returns an
-  `http.HandlerFunc` that routes by URL path: `/` and `/intro` serve the intro
-  arc, `/<arc>` serves that arc, and an unknown arc returns 404. Each page is
-  rendered with an `html/template` (`layout.html`) whose option links point at
-  `/<arc>`, so the story is navigable by clicking. Both functions are covered by
-  unit tests in `lib/cyoa_test.go` (routing driven via `httptest`). The web
-  version is done; the terminal/CLI bonus is not.
-
-  ```sh
-  cd cyoa
-  go run . -in gopher.json   # then open http://localhost:8080
-  ```
-
-- **`quiet_hn`** has a working upstream Hacker News client in `lib/`, with tests.
-  Those tests call the live HN API, so they fail without a network connection.
-  The exercise itself &mdash; making the page load quietly and quickly &mdash; is
-  not done.
-
-The not-started exercises contain an empty `main()` and an empty `lib` package.
-
 ## Layout
 
 Each exercise is its own Go module, named after its directory:
