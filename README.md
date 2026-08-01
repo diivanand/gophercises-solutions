@@ -9,7 +9,7 @@ My solutions to the [Gophercises](https://gophercises.com) Go exercises by Jon C
 | 1  | Quiz Game                                    | `quiz`         | ✅ Complete    |
 | 2  | URL Shortener                                | `urlshort`     | ✅ Complete    |
 | 3  | Choose Your Own Adventure                    | `cyoa`         | ✅ Complete    |
-| 4  | HTML Link Parser                             | `link`         | 🚧 Not started |
+| 4  | HTML Link Parser                             | `link`         | ✅ Complete    |
 | 5  | Sitemap Builder                              | `sitemap`      | 🚧 Not started |
 | 6  | Hacker Rank Problems &mdash; strings & bytes | `hr1`          | 🚧 Not started |
 | 7  | CLI Task Manager                             | `task`         | 🚧 Not started |
